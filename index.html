@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,47 +8,55 @@
     <title>InsightEdge: Advancing News Consumption</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-    <nav>
-        <div class="main-nav container flex">
-            <a href="#" onclick="reload()" class="company-logo">
-                <img src="./assets/logo.png" alt="company logo">
-            </a>
-            <div class="nav-links">
-                <ul class="flex">
-                    <li class="hover-link nav-item" id="ipl" onclick="onNavItemClick('ipl')">IPL</li>
-                    <li class="hover-link nav-item" id="finance" onclick="onNavItemClick('finance')">Finance</li>
-                    <li class="hover-link nav-item" id="politics" onclick="onNavItemClick('politics')">Politics</li>
-                </ul>
+    <div class="landing-page">
+        <h1>Welcome to InsightEdge</h1>
+        <p>Your go-to platform for insightful news and updates!</p>
+        <div id="clock"></div>
+        <button onclick="startProject()">Get Started</button>
+    </div>
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About InsightEdge</h2>
+            <p>InsightEdge is a dynamic News Website crafted with precision and passion, dedicated to advancing news
+                consumption for the modern digital age. Our mission is to provide users with an immersive and intuitive
+                platform that delivers the latest news updates seamlessly.</p>
+            <p>At InsightEdge, we believe in the power of user-centric design, prioritizing both aesthetics and
+                functionality to create an engaging browsing experience. Our website is meticulously developed from
+                scratch using HTML, CSS, and JavaScript, ensuring a smooth and responsive interface for every user.</p>
+            <p>We leverage cutting-edge technologies to integrate the News API seamlessly into our platform, offering
+                real-time news updates across various topics. Our commitment to innovation drives us to employ
+                asynchronous JavaScript techniques, ensuring efficient handling of API requests for fast and reliable
+                data retrieval.</p>
+            <p>Join us on our journey as we redefine news consumption, empowering users with up-to-date information and
+                a seamless browsing experience. Explore InsightEdge today and stay informed with the latest news from
+                around the globe.</p>
+            <p><strong>InsightEdge | Advancing News Consumption</strong></p>
+            <p><em>HTML, CSS, JavaScript | May 2023</em></p>
+        </div>
+    </section>
+    <section id="contact">
+        <p class="section__text__p1">Get in Touch</p>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
+                <p><a href="mailto:kautilyakamesh3@gmail.com">Email</a></p>
             </div>
-            <div class="search-bar flex">
-                <input id="search-text" type="text" class="news-input" placeholder="e.g. Science">
-                <button id="search-button" class="search-button">Search</button>
+            <div class="contact-info-container">
+                <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
+                <p><a href="https://www.linkedin.com/in/74104221b/">LinkedIn</a></p>
+            </div>
+            <div class="contact-info-container">
+                <img src="./assets/github.png" alt="Github icon" class="icon contact-icon" />
+                <p><a href="https://github.com/kautilyakameshmishra">Github</a></p>
             </div>
         </div>
-    </nav>
-    
-
-    <main>
-        <div class="cards-container container flex" id="cards-container">
-            
-        </div>
-    </main>
-
-    <template id="template-news-card">
-        <div class="card">
-            <div class="card-header">
-                <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
-            </div>
-            <div class="card-content">
-                <h3 id="news-title">This is the Title</h3>
-                <h6 class="news-source" id="news-source">End Gadget 26/08/2023</h6>
-                <p class="news-desc" id="news-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe quis voluptatum quisquam vitae doloremque facilis molestias quae ratione cumque!</p>
-            </div>
-        </div>
-    </template>
-
+    </section>
+    <footer>
+        <p>Copyright &#169; 2024 Kautilya Mishra. All Rights Reserved.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
-</html> 
+
+</html>

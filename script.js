@@ -1,10 +1,30 @@
 const API_KEY = "cd4af9ca0fa54e31a45dee8fa25c11a5";
 const url = "https://newsapi.org/v2/everything?q=";
 
-window.addEventListener("load", () => fetchNews("India"));
+window.addEventListener("load", () => {
+    fetchNews("India");
+    startClock();
+});
+
+function startProject() {
+    window.location.href = "main.html";
+}
 
 function reload() {
-    window.location.reload();
+    window.location.href = "index.html";
+}
+
+function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const timeString = `${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+    document.getElementById('clock').innerHTML = timeString;
+}
+
+function startClock() {
+    setInterval(updateClock, 1000);
 }
 
 async function fetchNews(query) {
@@ -49,6 +69,7 @@ function fillDataInCard(cardClone, article) {
 }
 
 let curSelectedNav = null;
+
 function onNavItemClick(id) {
     fetchNews(id);
     const navItem = document.getElementById(id);
