@@ -2,7 +2,12 @@ const API_KEY = "cd4af9ca0fa54e31a45dee8fa25c11a5";
 const url = "https://newsapi.org/v2/everything?q=";
 
 window.addEventListener("load", () => {
-    fetchNews("India");
+    fetchNews("India").catch(error => {
+        console.error("Error fetching news:", error);
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "Failed to fetch news. Please try again later.";
+        document.getElementById("cards-container").appendChild(errorMessage);
+    });
     startClock();
 });
 
@@ -28,9 +33,25 @@ function startClock() {
 }
 
 async function fetchNews(query) {
-    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
-    const data = await res.json();
-    bindData(data.articles);
+    try {
+        const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+        if (!res.ok) {
+            throw new Error(`Failed to fetch news: ${res.status} ${res.statusText}`);
+        }
+        const data = await res.json();
+        bindData(data.articles);
+    } catch (error) {
+        console.error("Error fetching news:", error);
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "Failed to fetch news. Please try again later.";
+        const githubLink = document.createElement("a");
+        githubLink.textContent = "View Source Code on GitHub & Run it locally";
+        githubLink.href = "https://github.com/kautilyakameshmishra/Insight-EDGE";
+        githubLink.target = "_blank";
+        errorMessage.appendChild(document.createElement("br"));
+        errorMessage.appendChild(githubLink);
+        document.getElementById("cards-container").appendChild(errorMessage);
+    }
 }
 
 function bindData(articles) {
@@ -84,7 +105,13 @@ const searchText = document.getElementById("search-text");
 searchButton.addEventListener("click", () => {
     const query = searchText.value;
     if (!query) return;
-    fetchNews(query);
+    fetchNews(query).catch(error => {
+        console.error("Error fetching news:", error);
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "Failed to fetch news. Please try again later.";
+        document.getElementById("cards-container").appendChild(errorMessage);
+    });
     curSelectedNav?.classList.remove("active");
     curSelectedNav = null;
 });
+
